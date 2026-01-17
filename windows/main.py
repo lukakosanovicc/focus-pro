@@ -8,13 +8,13 @@ class TodoListApp(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title("FocusPro")
+        self.title("focus-pro")
         self.geometry("400x500")
         style = Style(theme="flatly")
         style.configure("Custon.TEntry", foreground="gray")
 
         # Setup data file paths in user's Documents folder
-        self.user_dir = os.path.join(os.path.expanduser("~"), "Documents", "FocusPro")
+        self.user_dir = os.path.join(os.path.expanduser("~"), "Documents", "focus-pro")
         os.makedirs(self.user_dir, exist_ok=True)
         self.tasks_file = os.path.join(self.user_dir, "tasks.txt")
         self.done_file = os.path.join(self.user_dir, "done.txt")
