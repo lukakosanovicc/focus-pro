@@ -28,30 +28,22 @@ class TodoListApp(tk.Tk):
         style = Style(theme="flatly")
         style.configure("Custon.TEntry", foreground="gray")
 
-        # Create input field for adding tasks
         self.task_input = ttk.Entry(self, font=("TkDefaultFont", 16), width=30, style="Custon.TEntry")
         self.task_input.pack(pady=10)
 
-        # Set placeholder for input field
         self.task_input.insert(0, "Enter your todo here...")
 
-        # Bind event to clear placeholder when input field is clicked
         self.task_input.bind("<FocusIn>", self.clear_placeholder)
-        # Bind event to restore placeholder when input field loses focus
         self.task_input.bind("<FocusOut>", self.restore_placeholder)
-
-        # Create button for adding tasks
+        
         ttk.Button(self, text="Add", command=self.add_task).pack(pady=5)
 
-        # Create listbox to display added tasks
         self.task_list = tk.Listbox(self, font=("TkDefaultFont", 16), height=10, selectmode=tk.NONE)
         self.task_list.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
-        # Create buttons for marking tasks as done or deleting them
         ttk.Button(self, text="Delete All", style="danger.TButton",command=self.delete_all).pack(side=tk.LEFT, padx=10, pady=10)
         ttk.Button(self, text="Delete", style="danger.TButton",command=self.delete_task).pack(side=tk.RIGHT, padx=10, pady=10)
         
-        # Create buttton for displaying task statistics
         ttk.Button(self, text="Start session", style="info.TButton",command=self.start_session).pack(side=tk.BOTTOM, pady=10)
         
         self.load_tasks()
@@ -95,7 +87,7 @@ class TodoListApp(tk.Tk):
     def mark_and_next_task(self):
         if self.current_task_index is not None:
             task = self.task_list.get(self.current_task_index)
-            index_to_delete = self.current_task_index # Capture it before potential changes
+            index_to_delete = self.current_task_index
 
             duration_win = tk.Toplevel(self)
             duration_win.title("How long?")
